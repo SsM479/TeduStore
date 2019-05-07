@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper 
+	namespace="cn.tedu.store.mapper.DistrictMapper">
+
+	<!-- 获取所有省的列表 -->
+	<!-- List<Province> getProvince(); -->
+	<select id="getProvinces"
+		resultType="cn.tedu.store.bean.Province">
+		SELECT 
+			id,
+			province_code provinceCode,province_name provinceName
+		FROM
+			t_dict_provinces
+	</select>
+	
+	<!-- 获取某个省的市列表 -->
+	<!-- List<City> getCities(String provinceCode); -->
+	<select id="getCities"
+		resultType="cn.tedu.store.bean.City">
+		SELECT 
+			id,
+			province_code provinceCode,
+			city_code cityCode,city_name cityName
+		FROM
+			t_dict_cities
+		WHERE
+			province_code=#{provinceCode}
+	</select>
+	
+	<!-- 获取某个市的区列表 -->
+	<!-- List<Area> getAreas(String cityCode); -->
+	<select id="getAreas"
+		resultType="cn.tedu.store.bean.Area">
+		SELECT 
+			id,
+			city_code cityCode,
+			area_code areaCode,area_name areaName
+		FROM
+			t_dict_areas
+		WHERE
+			city_code=#{cityCode}
+	</select>
+	
+	<!-- 根据省代码获取省名 -->
+	<!-- String getProvinceNameByCode(String provinceCode); -->
+	<select id="getProvinceNameByCode"
+		resultType="java.lang.String">
+		SELECT 
+			province_name
+		FROM
+			t_dict_provinces
+		WHERE 
+			province_code=#{provinceCode};
+	</select>
+	
+	<!-- 根据市代码获取市名 -->
+	<!-- String getCityNameByCode(String cityCode); -->
+	<select id="getCityNameByCode"
+		resultType="java.lang.String">
+		SELECT 
+			city_name
+		FROM
+			t_dict_cities
+		WHERE
+			city_code=#{cityCode}
+	</select>
+	
+	<!--  根据区代码获取区名 -->
+	<!-- String getAreaNameByCode(String areaCode); -->
+	<select id="getAreaNameByCode"
+		resultType="java.lang.String">
+		SELECT 
+			area_name
+		FROM
+			t_dict_areas
+		WHERE
+			area_code=#{areaCode}
+	</select>
+	
+
+</mapper>
+
+
+
+
+
+
+
