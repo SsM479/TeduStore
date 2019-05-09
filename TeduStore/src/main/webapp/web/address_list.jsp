@@ -27,7 +27,7 @@
 <!--我的订单内容区域 #container-->
 <div id="container" class="clearfix">
 	<!-- 左边栏-->
-	<c:import url="user_left_side_bar.jsp"></c:import>
+	<c:import url="user_left_side_bar.jsp"/>
     
 	<!-- 右边栏-->
 	<div class="rightsidebar_box rt">	
